@@ -1,726 +1,310 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="ALVITALIDADE — Catering corporativo, coffee break, buffet empresarial e eventos institucionais em Luanda, Angola." />
-  <meta name="theme-color" content="#1f4d1d" />
-  <title>ALVITALIDADE | Catering Corporativo</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#214d1b">
+  <meta name="description" content="ALVITALIDADE — catering corporativo, coffee breaks, buffets e eventos institucionais em Luanda, Angola. Faça também parte de uma experiência bem servida.">
+  <title>ALVITALIDADE — Catering Corporativo em Luanda</title>
   <style>
     :root {
-      --green: #2d6b2b;
-      --green-deep: #16431b;
-      --green-soft: #edf5ea;
-      --green-mist: #f5faf2;
-      --orange: #ef8a2d;
-      --orange-deep: #d96d10;
-      --ink: #1d2a1b;
-      --muted: #59695a;
-      --bg: #f8f7f2;
-      --card: #ffffff;
-      --line: #e2eadf;
-      --shadow: 0 18px 50px rgba(24, 58, 24, 0.12);
+      --green: #2f6b35;
+      --green-dark: #193f24;
+      --green-soft: #edf4e9;
+      --orange: #e88735;
+      --ink: #223025;
+      --muted: #647064;
+      --cream: #fbfaf6;
+      --white: #fff;
+      --line: #e6e9df;
+      --shadow: 0 20px 55px rgba(27, 62, 33, .13);
+      --radius: 24px;
     }
-
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Arial, sans-serif;
-      background: var(--bg);
-      color: var(--ink);
-      line-height: 1.6;
-    }
-
-    img { max-width: 100%; display: block; }
+    html { scroll-behavior: smooth; scroll-padding-top: 86px; }
+    body { margin: 0; color: var(--ink); background: var(--cream); font-family: "Segoe UI", Arial, sans-serif; line-height: 1.65; }
+    img { display: block; max-width: 100%; }
     a { color: inherit; }
+    .container { width: min(1180px, calc(100% - 40px)); margin-inline: auto; }
 
-    .container {
-      width: min(1160px, calc(100% - 32px));
-      margin: 0 auto;
+    .site-header { position: sticky; inset: 0 0 auto; z-index: 20; background: rgba(255,255,255,.92); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(230,233,223,.85); }
+    .header-inner { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; color: var(--green-dark); font-size: .86rem; font-weight: 900; letter-spacing: .075em; }
+    .brand-icon { display: grid; place-items: center; width: 43px; height: 43px; border-radius: 15px; color: white; background: linear-gradient(145deg, var(--orange), var(--green)); font-size: 1.25rem; box-shadow: 0 8px 20px #193f2427; }
+    .nav { display: flex; align-items: center; gap: clamp(14px, 2.4vw, 30px); }
+    .nav a { text-decoration: none; font-size: .91rem; font-weight: 700; transition: color .2s ease; }
+    .nav a:hover, .nav a:focus-visible { color: var(--green); }
+    .nav .nav-contact { padding: 11px 17px; color: white; background: var(--green); border-radius: 999px; }
+    .nav .nav-contact:hover { color: white; background: var(--green-dark); }
+
+    .hero { position: relative; overflow: hidden; padding: 74px 0 82px; background: linear-gradient(125deg, #f3f8ef 0%, #fff 58%, #fff4e8 100%); }
+    .hero::after { position: absolute; width: 440px; height: 440px; right: -210px; top: -230px; content: ""; border-radius: 50%; border: 1px solid #e8eee1; box-shadow: 0 0 0 35px #ffffff38, 0 0 0 70px #ffffff24; pointer-events: none; }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1.04fr; align-items: center; gap: clamp(38px, 6vw, 82px); }
+    .eyebrow, .section-label { color: var(--orange); font-size: .76rem; font-weight: 900; letter-spacing: .17em; text-transform: uppercase; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; padding: 8px 13px; border: 1px solid #dfe9d9; border-radius: 99px; background: #ffffffc9; }
+    .eyebrow::before { width: 8px; height: 8px; content: ""; background: var(--orange); border-radius: 50%; }
+    h1 { max-width: 620px; margin: 22px 0 18px; color: var(--green-dark); font-size: clamp(2.65rem, 5.3vw, 4.8rem); line-height: 1.03; letter-spacing: -.055em; }
+    h1 span { color: var(--orange); }
+    .hero-copy > p:not(.eyebrow) { max-width: 560px; margin: 0; color: var(--muted); font-size: clamp(1.02rem, 1.8vw, 1.18rem); }
+    .button-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 27px; }
+    .button { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; gap: 9px; padding: 0 21px; border: 1px solid transparent; border-radius: 99px; text-decoration: none; font-weight: 800; transition: transform .22s ease, box-shadow .22s ease, background .22s ease; }
+    .button:hover { transform: translateY(-3px); }
+    .button-primary { color: white; background: #20b95a; box-shadow: 0 12px 26px #20b95a38; }
+    .button-primary:hover { background: #159b49; box-shadow: 0 16px 30px #20b95a45; }
+    .button-light { color: var(--green-dark); background: white; border-color: #dce5d8; }
+    .button-light:hover { box-shadow: 0 12px 24px #193f2415; }
+    .hero-points { display: flex; flex-wrap: wrap; gap: 16px 20px; margin: 24px 0 0; padding: 0; color: #536453; list-style: none; font-size: .86rem; font-weight: 700; }
+    .hero-points li::before { content: "✓"; margin-right: 7px; color: var(--green); font-weight: 900; }
+    .hero-visual { position: relative; min-width: 0; }
+    .hero-image-wrap { overflow: hidden; padding: 10px; border: 1px solid #e5e9dd; border-radius: 30px; background: white; box-shadow: var(--shadow); }
+    .hero-image { width: 100%; aspect-ratio: 1.16 / 1; object-fit: cover; object-position: center; border-radius: 22px; animation: image-arrive .9s cubic-bezier(.2,.8,.2,1) both; }
+    .hero-note { position: absolute; left: -22px; bottom: 25px; display: flex; align-items: center; gap: 11px; max-width: 245px; padding: 13px 17px; border: 1px solid var(--line); border-radius: 16px; background: #fff; box-shadow: var(--shadow); color: var(--green-dark); font-weight: 800; font-size: .9rem; }
+    .hero-note-icon { display: grid; place-items: center; width: 38px; height: 38px; flex: 0 0 auto; border-radius: 12px; background: var(--green-soft); color: var(--green); }
+
+    .section { padding: 88px 0; }
+    .section-heading { max-width: 760px; margin: 0 auto 38px; text-align: center; }
+    .section-heading h2, .split-copy h2 { margin: 8px 0 12px; color: var(--green-dark); font-size: clamp(2rem, 3.5vw, 3.1rem); line-height: 1.12; letter-spacing: -.04em; }
+    .section-heading p, .split-copy > p { margin: 0; color: var(--muted); font-size: 1.04rem; }
+    .service-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+    .service-card { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: white; box-shadow: 0 9px 28px #193f2408; transition: transform .35s ease, box-shadow .35s ease; }
+    .service-card:hover { transform: translateY(-7px); box-shadow: 0 22px 45px #193f241b; }
+    .service-photo { overflow: hidden; aspect-ratio: 1.45 / 1; background: var(--green-soft); }
+    .service-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
+    .service-card:hover .service-photo img { transform: scale(1.055); }
+    .service-content { padding: 21px 22px 24px; }
+    .service-content h3 { margin: 0 0 7px; color: var(--green-dark); font-size: 1.22rem; }
+    .service-content p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+    .values-band { padding: 40px 0; color: white; background: linear-gradient(115deg, var(--green-dark), #34713b); }
+    .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; text-align: center; }
+    .value-number { color: #ffdaa8; font-size: clamp(1.8rem, 3.5vw, 2.65rem); line-height: 1.15; font-weight: 900; letter-spacing: -.04em; }
+    .value-label { margin-top: 7px; color: #ffffffd9; font-size: .9rem; }
+
+    .story { background: #fff; }
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(32px, 6vw, 72px); }
+    .story-image-frame { overflow: hidden; padding: 11px; border: 1px solid var(--line); border-radius: 28px; background: var(--cream); box-shadow: var(--shadow); }
+    .story-image-frame img { width: 100%; aspect-ratio: 1.18 / 1; object-fit: cover; border-radius: 20px; transition: transform .7s ease; }
+    .story-image-frame:hover img { transform: scale(1.035); }
+    .check-list { display: grid; gap: 12px; margin: 25px 0 0; padding: 0; list-style: none; }
+    .check-list li { display: flex; align-items: flex-start; gap: 11px; color: #344435; font-weight: 650; }
+    .check-list li::before { display: grid; place-items: center; width: 24px; height: 24px; flex: 0 0 24px; content: "✓"; border-radius: 50%; background: var(--green-soft); color: var(--green); font-size: .8rem; font-weight: 900; }
+
+    .event-section { padding: 88px 0; background: linear-gradient(180deg, #f6f8f2, #fbfaf6); }
+    .event-card { position: relative; overflow: hidden; min-height: 380px; border-radius: 30px; background: var(--green-dark); box-shadow: var(--shadow); }
+    .event-card > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 45%; }
+    .event-overlay { position: absolute; inset: 0; display: flex; align-items: end; padding: clamp(26px, 5vw, 52px); background: linear-gradient(90deg, rgba(15,42,21,.78), rgba(15,42,21,.22) 70%, rgba(15,42,21,.05)); }
+    .event-copy { max-width: 560px; color: white; }
+    .event-copy .section-label { color: #ffcf95; }
+    .event-copy h2 { margin: 9px 0 10px; color: white; font-size: clamp(2rem, 4vw, 3.15rem); line-height: 1.1; }
+    .event-copy p { margin: 0 0 20px; color: #ffffffdf; }
+
+    .contact-section { padding: 86px 0; }
+    .contact-panel { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 32px; padding: clamp(28px, 5vw, 52px); border-radius: 30px; color: white; background: linear-gradient(130deg, #34743a, var(--green-dark)); box-shadow: var(--shadow); }
+    .contact-panel h2 { margin: 8px 0 10px; color: white; font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.12; }
+    .contact-panel p { max-width: 650px; margin: 0; color: #ffffffd9; }
+    .contact-panel .section-label { color: #ffcf95; }
+    .contact-details { display: flex; flex-wrap: wrap; gap: 18px 26px; margin-top: 20px; color: #fff; font-weight: 700; }
+    .contact-details a { text-decoration: none; }
+    .contact-details a:hover { text-decoration: underline; }
+    .contact-action { white-space: nowrap; }
+
+    footer { padding: 25px 0; color: #e4eee2; background: #14361a; text-align: center; font-size: .88rem; }
+    footer strong { color: white; letter-spacing: .06em; }
+    .whatsapp-float { position: fixed; right: 22px; bottom: 22px; z-index: 15; display: grid; place-items: center; width: 58px; height: 58px; border: 3px solid white; border-radius: 50%; color: white; background: #20b95a; box-shadow: 0 12px 30px #178c453f; text-decoration: none; font-size: 1.65rem; transition: transform .2s ease; }
+    .whatsapp-float:hover { transform: translateY(-4px) scale(1.04); }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .service-card:nth-child(2) { transition-delay: .08s; }
+    .service-card:nth-child(3) { transition-delay: .16s; }
+    @keyframes image-arrive { from { opacity: 0; transform: translateY(16px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .hero-note { left: -10px; }
+      .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .contact-panel { grid-template-columns: 1fr; }
+      .contact-action { justify-self: start; }
     }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(252, 252, 249, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid #e9efe6;
+    @media (max-width: 700px) {
+      .container { width: min(100% - 30px, 560px); }
+      .header-inner { min-height: 68px; }
+      .nav { gap: 12px; }
+      .nav a:not(.nav-contact) { display: none; }
+      .nav .nav-contact { padding: 9px 13px; font-size: .84rem; }
+      .hero { padding: 54px 0 60px; }
+      .hero-grid, .story-grid { grid-template-columns: 1fr; }
+      .hero-image { aspect-ratio: 1.15 / 1; }
+      .hero-note { left: 8px; bottom: 18px; }
+      .section, .event-section, .contact-section { padding: 64px 0; }
+      .section-heading { margin-bottom: 28px; }
+      .service-grid { grid-template-columns: 1fr; gap: 16px; }
+      .service-photo { aspect-ratio: 1.55 / 1; }
+      .values-grid { grid-template-columns: repeat(2, 1fr); row-gap: 25px; }
+      .story-image-frame img { aspect-ratio: 1.2 / 1; }
+      .event-card { min-height: 440px; }
+      .event-overlay { background: linear-gradient(0deg, rgba(15,42,21,.84), rgba(15,42,21,.08) 100%); }
+      .contact-details { flex-direction: column; gap: 8px; }
+      .button-row { flex-direction: column; align-items: stretch; }
+      .button { width: 100%; }
+      .whatsapp-float { right: 15px; bottom: 15px; width: 54px; height: 54px; }
     }
-
-    .topbar .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 78px;
-      gap: 20px;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      font-weight: 800;
-      color: var(--green-deep);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-size: 0.82rem;
-    }
-
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--green) 0%, var(--green-deep) 100%);
-      color: #fff;
-      box-shadow: 0 12px 30px rgba(24, 67, 27, 0.2);
-      font-size: 1.2rem;
-      font-weight: 900;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    .nav a {
-      text-decoration: none;
-      font-size: 0.92rem;
-      font-weight: 700;
-      color: var(--ink);
-      transition: color 0.2s ease;
-    }
-
-    .nav a:hover,
-    .nav a:focus { color: var(--green); }
-
-    .nav-cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 11px 18px;
-      border-radius: 999px;
-      background: #1dc15d;
-      color: #fff;
-      font-weight: 800;
-      box-shadow: 0 12px 28px rgba(29, 193, 93, 0.25);
-      text-decoration: none;
-    }
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      padding: 110px 0 70px;
-      background:
-        radial-gradient(circle at top left, rgba(135, 175, 123, 0.16), transparent 38%),
-        linear-gradient(135deg, #f3f9f0 0%, #ffffff 52%, #fff5ea 100%);
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.12fr 0.88fr;
-      align-items: center;
-      gap: clamp(32px, 6vw, 90px);
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 14px;
-      border: 1px solid #dfead9;
-      background: rgba(255,255,255,0.8);
-      border-radius: 999px;
-      color: var(--green);
-      font-size: 0.76rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      font-weight: 800;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--orange);
-      display: inline-block;
-    }
-
-    h1 {
-      margin: 22px 0 18px;
-      font-size: clamp(2.5rem, 5vw, 4.4rem);
-      line-height: 1.08;
-      letter-spacing: -0.05em;
-      color: var(--green-deep);
-      max-width: 640px;
-    }
-
-    h1 .highlight { color: var(--orange); }
-
-    .lead {
-      margin: 0 0 28px;
-      font-size: clamp(1.02rem, 2vw, 1.22rem);
-      color: var(--muted);
-      max-width: 560px;
-    }
-
-    .btn-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      align-items: center;
-      margin-bottom: 26px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      min-height: 56px;
-      padding: 0 22px;
-      border-radius: 999px;
-      border: 2px solid transparent;
-      text-decoration: none;
-      font-weight: 800;
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
-    }
-
-    .btn:hover { transform: translateY(-2px); }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #26c75d 0%, #169a4f 100%);
-      color: #fff;
-      box-shadow: 0 16px 30px rgba(29, 193, 93, 0.28);
-    }
-
-    .btn-secondary {
-      background: #fff;
-      color: var(--green-deep);
-      border-color: rgba(24, 67, 27, 0.18);
-    }
-
-    .mini-stats {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.9rem;
-      font-weight: 700;
-    }
-
-    .mini-stats li {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .mini-stats li::before {
-      content: "";
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--orange);
-      display: inline-block;
-    }
-
-    .hero-photo {
-      position: relative;
-      width: min(100%, 490px);
-      justify-self: end;
-    }
-
-    .hero-photo .frame {
-      position: relative;
-      background: linear-gradient(180deg, #fff, #f7f7ef);
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      padding: 18px;
-      box-shadow: var(--shadow);
-    }
-
-    .hero-photo .frame::before {
-      content: "";
-      position: absolute;
-      width: 90%;
-      height: 90%;
-      inset: auto 0 0 auto;
-      background: linear-gradient(135deg, rgba(47, 109, 43, 0.1), rgba(240, 138, 45, 0.12));
-      filter: blur(18px);
-      transform: translate(12px, 18px);
-      z-index: -1;
-      border-radius: 30px;
-    }
-
-    .hero-photo img {
-      border-radius: 22px;
-      width: 100%;
-      min-height: 480px;
-      object-fit: cover;
-      border: 1px solid rgba(29, 42, 27, 0.08);
-    }
-
-    .floating-box {
-      position: absolute;
-      left: -16px;
-      bottom: 22px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 16px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.97);
-      box-shadow: var(--shadow);
-      border: 1px solid var(--line);
-      font-weight: 800;
-      color: var(--green-deep);
-    }
-
-    .floating-box .icon {
-      display: grid;
-      place-items: center;
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      background: var(--green-soft);
-      color: var(--green);
-      font-size: 1.2rem;
-    }
-
-    .section {
-      padding: 90px 0;
-    }
-
-    .section-head {
-      margin-bottom: 28px;
-      text-align: center;
-    }
-
-    .section-kicker {
-      display: inline-block;
-      color: var(--orange);
-      font-size: 0.76rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      font-weight: 900;
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      margin: 0;
-      font-size: clamp(2rem, 3vw, 3rem);
-      line-height: 1.15;
-      letter-spacing: -0.04em;
-      color: var(--green-deep);
-    }
-
-    .subhead {
-      max-width: 700px;
-      margin: 14px auto 0;
-      font-size: 1.06rem;
-      color: var(--muted);
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(220px, 1fr));
-      gap: 24px;
-      margin-top: 38px;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 28px 22px;
-      box-shadow: 0 10px 26px rgba(24, 58, 24, 0.03);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 18px 42px rgba(24, 58, 24, 0.08);
-    }
-
-    .icon-box {
-      width: 58px;
-      height: 58px;
-      display: grid;
-      place-items: center;
-      font-size: 1.8rem;
-      border-radius: 18px;
-      background: var(--green-soft);
-      margin-bottom: 18px;
-    }
-
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 1.28rem;
-      color: var(--green-deep);
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.98rem;
-    }
-
-    .stats-band {
-      background: linear-gradient(135deg, var(--green-deep) 0%, var(--green) 100%);
-      color: #fff;
-      padding: 42px 0;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 22px;
-      text-align: center;
-    }
-
-    .stat-number {
-      font-size: clamp(2rem, 4vw, 3.1rem);
-      font-weight: 900;
-      letter-spacing: -0.05em;
-      color: #f8d9ac;
-      line-height: 1.1;
-    }
-
-    .stat-label {
-      margin-top: 8px;
-      color: rgba(255,255,255,0.86);
-      font-size: 0.92rem;
-      letter-spacing: 0.02em;
-    }
-
-    .split {
-      display: grid;
-      grid-template-columns: 1.06fr 0.94fr;
-      gap: 48px;
-      align-items: center;
-    }
-
-    .checklist {
-      list-style: none;
-      margin: 26px 0 0;
-      padding: 0;
-    }
-
-    .checklist li {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      margin-bottom: 14px;
-      color: var(--ink);
-      font-weight: 600;
-    }
-
-    .checklist li::before {
-      content: "✓";
-      display: inline-grid;
-      place-items: center;
-      width: 26px;
-      height: 26px;
-      min-width: 26px;
-      border-radius: 50%;
-      background: var(--green-soft);
-      color: var(--green);
-      font-weight: 900;
-      margin-top: 2px;
-    }
-
-    .panel {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      padding: 22px;
-      box-shadow: var(--shadow);
-    }
-
-    .panel img {
-      border-radius: 20px;
-      width: 100%;
-      object-fit: cover;
-      min-height: 420px;
-    }
-
-    .cta-band {
-      background: linear-gradient(135deg, var(--green) 0%, var(--green-deep) 100%);
-      color: #fff;
-      border-radius: 30px;
-      padding: 52px 28px;
-      text-align: center;
-      margin-top: 8px;
-      box-shadow: 0 28px 70px rgba(24, 67, 27, 0.18);
-    }
-
-    .cta-band .section-kicker {
-      color: #ffd7a3;
-    }
-
-    .cta-band h2 { color: #fff; }
-    .cta-band p {
-      max-width: 620px;
-      margin: 14px auto 26px;
-      color: rgba(255,255,255,0.88);
-      font-size: 1.04rem;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(220px, 1fr));
-      gap: 22px;
-      margin-top: 36px;
-    }
-
-    .contact-item {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 30px 22px;
-      text-align: center;
-      box-shadow: 0 12px 28px rgba(24, 58, 24, 0.04);
-    }
-
-    .contact-item .icon-box {
-      margin: 0 auto 16px;
-      width: 58px;
-      height: 58px;
-      border-radius: 16px;
-    }
-
-    .contact-item a {
-      color: var(--green-deep);
-      text-decoration: none;
-      font-weight: 800;
-      font-size: 1.06rem;
-    }
-
-    .contact-item small {
-      display: block;
-      margin-top: 8px;
-      color: var(--muted);
-      font-size: 0.82rem;
-    }
-
-    footer {
-      background: var(--green-deep);
-      color: rgba(255,255,255,0.8);
-      padding: 32px 0 22px;
-      text-align: center;
-    }
-
-    footer .brand {
-      color: #fff;
-      justify-content: center;
-      margin-bottom: 12px;
-    }
-
-    footer p {
-      margin: 0;
-      font-size: 0.93rem;
-      line-height: 1.8;
-    }
-
-    .wa-float {
-      position: fixed;
-      right: 22px;
-      bottom: 22px;
-      z-index: 120;
-      width: 62px;
-      height: 62px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #27cc63, #1daa52);
-      display: grid;
-      place-items: center;
-      box-shadow: 0 18px 38px rgba(19, 145, 71, 0.38);
-      text-decoration: none;
-      color: #fff;
-      font-size: 1.85rem;
-      border: 3px solid rgba(255,255,255,0.8);
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(36, 193, 94, 0.42); }
-      70% { box-shadow: 0 0 0 18px rgba(36, 193, 94, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(36, 193, 94, 0); }
-    }
-
-    @media (max-width: 940px) {
-      .hero-grid,
-      .split,
-      .cards,
-      .stats-grid,
-      .contact-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-photo { justify-self: center; }
-
-      .cards { grid-template-columns: repeat(2, minmax(220px, 1fr)); }
-    }
-
-    @media (max-width: 760px) {
-      .nav { display: none; }
-      .cards,
-      .stats-grid,
-      .contact-grid,
-      .split { grid-template-columns: 1fr; }
-      .hero { padding-top: 80px; }
-      .topbar .container { min-height: 70px; }
-      .btn-row { flex-direction: column; align-items: stretch; }
-      .btn { width: 100%; }
-      .hero-photo .frame { padding: 12px; }
-      .hero-photo img { min-height: 320px; }
-      .floating-box { position: static; margin-top: 14px; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
     }
   </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="container">
-      <a class="brand" href="#top" aria-label="ALVITALIDADE">
-        <span class="brand-mark">A</span>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" aria-label="ALVITALIDADE — início">
+        <span class="brand-icon" aria-hidden="true">A</span>
         <span>ALVITALIDADE</span>
       </a>
-
-      <nav aria-label="Menu principal">
-        <ul class="nav">
-          <li><a href="#sobre">Quem Somos</a></li>
-          <li><a href="#servicos">Serviços</a></li>
-          <li><a href="#diferenciais">Diferenciais</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-          <li><a href="https://wa.me/244922388662" target="_blank" rel="noopener" class="nav-cta">WhatsApp</a></li>
-        </ul>
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="#sobre">Quem somos</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#experiencia">Experiência</a>
+        <a class="nav-contact" href="https://wa.me/244922388662" target="_blank" rel="noopener noreferrer">Fale connosco ↗</a>
       </nav>
     </div>
   </header>
 
-  <main id="top">
-    <section class="hero">
+  <main>
+    <section class="hero" id="inicio">
       <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">Catering corporativo · Luanda, Angola</div>
-          <h1>Inspirando <span class="highlight">saúde</span> e <span class="highlight">vitalidade</span> nos seus eventos.</h1>
-          <p class="lead">Coffee breaks, buffets empresariais e eventos institucionais com qualidade, pontualidade, sabor e atenção de quem entende de experiências bem servidas.</p>
-
-          <div class="btn-row">
-            <a class="btn btn-primary" href="https://wa.me/244922388662?text=Ol%C3%A1%20ALVITALIDADE!%20Gostaria%20de%20solicitar%20uma%20proposta%20de%20catering%20corporativo." target="_blank" rel="noopener">
-              Falar no WhatsApp
-            </a>
-            <a class="btn btn-secondary" href="#servicos">Conhecer os serviços</a>
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Catering corporativo · Luanda, Angola</p>
+          <h1>Inspirando <span>saúde</span> e vitalidade nos seus eventos.</h1>
+          <p>Coffee breaks, buffets empresariais e eventos institucionais preparados com qualidade, pontualidade e atenção a cada detalhe. Uma experiência que representa bem a sua organização.</p>
+          <div class="button-row">
+            <a class="button button-primary" href="https://wa.me/244922388662?text=Ol%C3%A1%20ALVITALIDADE!%20Gostaria%20de%20solicitar%20uma%20proposta%20de%20catering%20corporativo." target="_blank" rel="noopener noreferrer">Pedir uma proposta <span aria-hidden="true">→</span></a>
+            <a class="button button-light" href="#servicos">Conhecer os serviços</a>
           </div>
-
-          <ul class="mini-stats" aria-label="Principais características">
-            <li>Serviço premium</li>
+          <ul class="hero-points" aria-label="Compromissos da ALVITALIDADE">
             <li>Atendimento dedicado</li>
-            <li>Segurança alimentar</li>
+            <li>Apresentação cuidada</li>
+            <li>Luanda e todo o país</li>
           </ul>
         </div>
-
-        <div class="hero-photo" aria-label="Imagem de apresentação da ALVITALIDADE">
-          <div class="frame">
-            <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQDAwMDAgQDAwMEBAQFBgoGBgUFBgwICQcKDgwPDg4MDQ0PERYTDxAVEQ0NExoTFRcYGRkZDxIbHRsYHRYYGRj/2wBDAQQEBAYFBgsGBgsYEA0QGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYG/2wBDAQkEBQYFBQYGBQYHBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGDQgGBQQDAwUGBQgHCAgMCQ0J///Z" alt="Catering corporativo da ALVITALIDADE" />
+        <div class="hero-visual">
+          <div class="hero-image-wrap">
+            <img class="hero-image" src="Images/Hero%20.webp" alt="Coffee break ALVITALIDADE com equipa de serviço e mesa de produtos frescos" fetchpriority="high">
           </div>
-          <div class="floating-box">
-            <span class="icon">✔</span>
-            <span>Eventos bem servidos</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="sobre">
-      <div class="container">
-        <div class="section-head">
-          <div class="section-kicker">Quem Somos</div>
-          <h2>Uma empresa angolana dedicada à excelência</h2>
-          <p class="subhead">A ALVITALIDADE é uma empresa angolana especializada em prestação de serviços corporativos, conectada com a rotina das organizações e comprometida com soluções que elevam a experiência do evento.</p>
-        </div>
-
-        <div class="cards">
-          <article class="card">
-            <div class="icon-box">☕</div>
-            <h3>Catering Corporativo</h3>
-            <p>Serviços completos para empresas com qualidade, variedade e apresentação cuidada.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon-box">🥐</div>
-            <h3>Coffee Break</h3>
-            <p>Pausas gastronómicas para reuniões, conferências, formações e eventos dinâmicos.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon-box">🍽️</div>
-            <h3>Buffet Empresarial</h3>
-            <p>Buffets executivos pensados para almoços, encontros e celebrações institucionais.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon-box">🏛️</div>
-            <h3>Eventos Institucionais</h3>
-            <p>Apoio logístico e gastronómico para eventos oficiais, funcionais e de marca.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="stats-band">
-      <div class="container stats-grid">
-        <div>
-          <div class="stat-number">105+</div>
-          <div class="stat-label">Participantes por evento</div>
-        </div>
-        <div>
-          <div class="stat-number">2x</div>
-          <div class="stat-label">Coffee breaks por dia</div>
-        </div>
-        <div>
-          <div class="stat-number">100%</div>
-          <div class="stat-label">Segurança alimentar</div>
-        </div>
-        <div>
-          <div class="stat-number">Premium</div>
-          <div class="stat-label">Materiais descartáveis</div>
+          <div class="hero-note"><span class="hero-note-icon" aria-hidden="true">✦</span><span>Bem servido. Bem pensado. Feito também por si.</span></div>
         </div>
       </div>
     </section>
 
     <section class="section" id="servicos">
-      <div class="container split">
-        <div>
-          <div class="section-kicker">Escopo do Serviço</div>
-          <h2>Tudo incluído, sem preocupações.</h2>
-          <p class="subhead" style="margin-left:0; margin-right:0; text-align:left;">Cuidamos de cada detalhe para que o seu evento decorra com total tranquilidade, da produção à desmontagem.</p>
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="section-label">O que fazemos</span>
+          <h2>Uma boa experiência começa à mesa.</h2>
+          <p>Serviços flexíveis para reuniões, formações, conferências e celebrações empresariais — com sabor, organização e cuidado em cada detalhe.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card reveal">
+            <div class="service-photo"><img src="Images/coffee%20Break.webp" alt="Coffee break preparado para uma reunião empresarial" loading="lazy"></div>
+            <div class="service-content"><h3>Coffee break</h3><p>Pausas acolhedoras com bebidas, frutas e opções frescas para manter a energia do evento.</p></div>
+          </article>
+          <article class="service-card reveal">
+            <div class="service-photo"><img src="Images/Servi%C3%A7os%20alvitalidade.webp" alt="Seleção fresca e cuidada para catering corporativo" loading="lazy"></div>
+            <div class="service-content"><h3>Catering corporativo</h3><p>Menus e serviço adaptados ao perfil da sua organização e ao formato do evento.</p></div>
+          </article>
+          <article class="service-card reveal">
+            <div class="service-photo"><img src="Images/Evento%20corporativo.webp" alt="Participantes num evento corporativo com serviço de catering" loading="lazy"></div>
+            <div class="service-content"><h3>Eventos institucionais</h3><p>Apoio gastronómico e apresentação profissional para receber bem os seus convidados.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-          <ul class="checklist">
-            <li>Produção dos alimentos no próprio local ou em central</li>
-            <li>Transporte e equipamentos térmicos para manutenção da temperatura</li>
-            <li>Copos, guardanapos e descartáveis premium</li>
-            <li>Reposição contínua durante todo o evento</li>
-            <li>Montagem, atendimento e desmontagem</li>
-            <li>Equipa de apoio especializada</li>
-            <li>Organização do espaço e apresentação visual</li>
+    <section class="values-band" aria-label="Compromissos do serviço">
+      <div class="container values-grid">
+        <div><div class="value-number">105+</div><div class="value-label">Participantes por evento</div></div>
+        <div><div class="value-number">2</div><div class="value-label">Coffee breaks por dia</div></div>
+        <div><div class="value-number">100%</div><div class="value-label">Atenção à segurança alimentar</div></div>
+        <div><div class="value-number">Premium</div><div class="value-label">Materiais e apresentação</div></div>
+      </div>
+    </section>
+
+    <section class="section story" id="sobre">
+      <div class="container story-grid">
+        <div class="story-image-frame reveal">
+          <img src="Images/Equipe%20servi%C3%A7o%20.webp" alt="Equipa ALVITALIDADE a preparar cuidadosamente o serviço" loading="lazy">
+        </div>
+        <div class="split-copy reveal">
+          <span class="section-label">Quem somos</span>
+          <h2>O cuidado que se sente em cada detalhe.</h2>
+          <p>A ALVITALIDADE é uma empresa angolana dedicada a criar experiências de catering corporativo com profissionalismo, hospitalidade e uma apresentação à altura de cada ocasião.</p>
+          <ul class="check-list">
+            <li>Planeamento atento às necessidades do evento</li>
+            <li>Produção no local ou em central, conforme o serviço</li>
+            <li>Transporte, montagem, reposição e desmontagem</li>
+            <li>Equipa dedicada e organização do espaço</li>
+            <li>Opções frescas, equilibradas e bem apresentadas</li>
           </ul>
         </div>
+      </div>
+    </section>
 
-        <div class="panel">
-          <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQDAwMDAgQDAwMEBAQFBgoGBgUFBgwICQcKDgwPDg4MDQ0PERYTDxAVEQ0NExoTFRcYGRkZDxIbHRsYHRYYGRj/2wBDAQQEBAYFBgsGBgsYEA0QGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBQYGBgYGBgYGBgYGBgYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBgYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQyGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQYGBQnIgaW5mbyBpZm9ybWEtZGF0YQ==
+    <section class="event-section" id="experiencia">
+      <div class="container">
+        <div class="event-card reveal">
+          <img src="Images/Evento%20corporativo.webp" alt="Ambiente acolhedor de um evento corporativo servido pela ALVITALIDADE" loading="lazy">
+          <div class="event-overlay">
+            <div class="event-copy">
+              <span class="section-label">Uma experiência completa</span>
+              <h2>Receba os seus convidados com confiança.</h2>
+              <p>Da preparação à última reposição, a nossa equipa ajuda a tornar o seu evento mais organizado, agradável e memorável.</p>
+              <a class="button button-primary" href="https://wa.me/244922388662?text=Ol%C3%A1%20ALVITALIDADE!%20Quero%20conversar%20sobre%20o%20meu%20evento." target="_blank" rel="noopener noreferrer">Vamos planear o seu evento <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contacto">
+      <div class="container">
+        <div class="contact-panel reveal">
+          <div>
+            <span class="section-label">Fale connosco</span>
+            <h2>O próximo evento pode começar aqui.</h2>
+            <p>Conte-nos o que está a planear. Teremos todo o gosto em conversar sobre uma solução à medida da sua organização.</p>
+            <div class="contact-details">
+              <a href="tel:+244922388662">Telefone: 922 388 662</a>
+              <a href="https://www.instagram.com/alvitalidade.ao" target="_blank" rel="noopener noreferrer">Instagram: @alvitalidade.ao</a>
+              <span>Luanda — Angola</span>
+            </div>
+          </div>
+          <a class="button button-primary contact-action" href="https://wa.me/244922388662?text=Ol%C3%A1%20ALVITALIDADE!%20Gostaria%20de%20pedir%20uma%20proposta%20para%20o%20meu%20evento." target="_blank" rel="noopener noreferrer">Falar pelo WhatsApp ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container"><strong>ALVITALIDADE</strong> · Catering corporativo, coffee breaks e eventos · Luanda, Angola</div></footer>
+  <a class="whatsapp-float" href="https://wa.me/244922388662?text=Ol%C3%A1%20ALVITALIDADE!" target="_blank" rel="noopener noreferrer" aria-label="Falar com a ALVITALIDADE pelo WhatsApp">☏</a>
+
+  <script>
+    (() => {
+      const items = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        items.forEach(item => item.classList.add('is-visible'));
+        return;
+      }
+      const observer = new IntersectionObserver((entries, currentObserver) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            currentObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.14, rootMargin: '0px 0px -35px 0px' });
+      items.forEach(item => observer.observe(item));
+    })();
+  </script>
+</body>
+</html>
